@@ -1,29 +1,40 @@
 function Contact() {
+  const mobile = window.innerWidth <= 768;
+
   return (
     <section
       id="contact"
       style={{
-        padding: "120px 20px",
+        padding: mobile ? "90px 16px" : "120px 20px",
         background: "#0d0d0d",
+        overflowX: "hidden",
       }}
     >
       <div
         style={{
           maxWidth: "1200px",
+          width: "100%",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(350px,1fr))",
-          gap: "50px",
+          gridTemplateColumns: mobile ? "1fr" : "repeat(auto-fit,minmax(350px,1fr))",
+          gap: mobile ? "32px" : "50px",
           alignItems: "center",
+          textAlign: mobile ? "center" : "left",
+          boxSizing: "border-box",
         }}
       >
-        {/* LEFT SIDE */}
-
-        <div>
+        <div
+          style={{
+            width: "100%",
+            maxWidth: mobile ? "520px" : "none",
+            margin: mobile ? "0 auto" : "0",
+          }}
+        >
           <h2
             style={{
-              fontSize: "3rem",
+              fontSize: mobile ? "2.2rem" : "3rem",
               marginBottom: "20px",
+              lineHeight: "1.15",
             }}
           >
             Get Your Free Quote
@@ -36,10 +47,9 @@ function Contact() {
               marginBottom: "40px",
             }}
           >
-            Whether you're planning a complete garden
-            transformation, new patio, fencing or artificial
-            lawn installation, we'd love to hear about your
-            project.
+            Whether you're planning a complete garden transformation, new patio,
+            fencing or artificial lawn installation, we'd love to hear about
+            your project.
           </p>
 
           <div style={infoBox}>
@@ -58,36 +68,24 @@ function Contact() {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
-
         <form
           style={{
+            width: "100%",
+            maxWidth: mobile ? "520px" : "none",
+            margin: "0 auto",
             display: "flex",
             flexDirection: "column",
             gap: "20px",
             background: "#111",
-            padding: "40px",
+            padding: mobile ? "28px 18px" : "40px",
             borderRadius: "25px",
             border: "1px solid #222",
+            boxSizing: "border-box",
           }}
         >
-          <input
-            type="text"
-            placeholder="Your Name"
-            style={inputStyle}
-          />
-
-          <input
-            type="email"
-            placeholder="Email Address"
-            style={inputStyle}
-          />
-
-          <input
-            type="tel"
-            placeholder="Phone Number"
-            style={inputStyle}
-          />
+          <input type="text" placeholder="Your Name" style={inputStyle} />
+          <input type="email" placeholder="Email Address" style={inputStyle} />
+          <input type="tel" placeholder="Phone Number" style={inputStyle} />
 
           <textarea
             placeholder="Tell us about your project..."
@@ -104,8 +102,9 @@ function Contact() {
               color: "white",
               fontWeight: "700",
               cursor: "pointer",
-              fontSize: "1rem",
+              fontSize: mobile ? "0.95rem" : "1rem",
               transition: "0.3s",
+              width: "100%",
             }}
           >
             Request Free Quote →
@@ -117,12 +116,14 @@ function Contact() {
 }
 
 const inputStyle = {
+  width: "100%",
   padding: "18px",
   borderRadius: "15px",
   border: "1px solid #222",
   background: "#0d0d0d",
   color: "white",
   fontSize: "1rem",
+  boxSizing: "border-box",
 };
 
 const infoBox = {
@@ -131,6 +132,7 @@ const infoBox = {
   borderRadius: "20px",
   padding: "25px",
   marginBottom: "20px",
+  boxSizing: "border-box",
 };
 
 export default Contact;
